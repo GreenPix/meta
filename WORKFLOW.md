@@ -34,5 +34,7 @@ summary of what have been done during the last month. When a project
 is mentionned into one of these recap, it is tagged using the
 following convention: `<project-name>-r<recap-number>`.
 
-That is, if for instance `sarosa` is mentionned in the recap #5, a tag
-`sarosa-r5` will be created.
+That is, if for instance `sarosa` is mentionned in the recap #5, a
+tag `sarosa-r5` will be created. As much as possible, fixed issues
+and merged PR will be assign to a related milestone with the same
+name (that is, in this example, `sarosa-r5`).
