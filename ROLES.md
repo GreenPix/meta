@@ -11,20 +11,20 @@ pleasant game, without either cash shop or advertisment.
 The GreenPix President is the Renaissance Project Leader. The final call
 is his.
 
-The current Project Leader is @Azamung.
+The current Project Leader is [@Azamung](https://github.com/azamung).
 
 ### Core Team
 
 GreenPix members that are involved in Renaissance software development
 form the Core Team.  The Core Team leads the Renaissance
 development. With respect with the workflow (see WORKFLOW.md), they
-merge regulard and non regular contributors work into `master` branch.
+merge regular and non regular contributors work into `master` branch.
 
 The current Core Team members are:
 
-* @Nemikolh
-* @Vaelden
-* @Ikyushii
+* [@Nemikolh](https://github.com/nemikolh)
+* [@Vaelden](https://github.com/vaelden)
+* [@Ikyushii](https://github.com/ikyushii)
 
 #### Community Mediator
 
@@ -34,7 +34,7 @@ recap published in the project forum. He is a good interlocutor if you
 want to contribute to Renaissance
 ([visiting our Gitter room is also a good idea](https://gitter.im/GreenPix/dev).
 
-The current Community Mediator is @Ikyushii.
+The current Community Mediator is [@Ikyushii](https://github.com/ikyushii).
 
 ### Game Design Team
 
@@ -46,7 +46,7 @@ cannot be merged into `master` without their agreement.
 
 Regular contributors are well known and trusted Renaissance
 contributors. They can do everything a Core Team member does, except
-merge PR into `master`.
+merging PR into `master`.
 
 ## New Contributors
 
