@@ -11,6 +11,10 @@ directly to those repositories. If you are a new contributor, you do
 not have write accesses. You have to fork the targeted repositories
 and push your changes into those forks.
 
+It's a good practice that even Core Team members work on their own fork
+for minor or trivial features and keep branches in upstream
+repositories for major features.
+
 ## Branch model
 
 Because Renaissance is still in an early development stage, we used a
