@@ -10,6 +10,9 @@ joining the
 
 ## License policy
 
+*If you have no idea what a license is, check out
+ [this website](http://choosealicense.com/no-license/).*
+
 Each repository can have its own license, even GreenPix will try to be
 consistent and avoid to use to many different licence. If no LICENSE file
 is present at the root of a repository, then the project is *open source*
