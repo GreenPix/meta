@@ -11,7 +11,7 @@ joining the
 ## License policy
 
 Each repository can have its own license, even GreenPix will try to be
-consistent and avoid to use to many different licence. If no LICENSE file is
-present at the root of a repository, then the prokect is *open source* but
-not a free software. That is, you are not allowed to reuse it in your own
-project without the explicit permission of the repositiries authors.
+consistent and avoid to use to many different licence. If no LICENSE file
+is present at the root of a repository, then the project is *open source*
+but not a free software. That is, you are not allowed to reuse it in your
+own project without the explicit permission of the repositiries authors.
