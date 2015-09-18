@@ -1,4 +1,5 @@
 # Rules
+[Rule]: #rule
 
 `Rules` is a system in Lycan that allow to inject the code logic for
 the stats update at run-time. It has simple semantics in order be able
@@ -11,14 +12,15 @@ for more clarity and simplicity*.
 
 # Table of contents
 
-* Rule
-  * Definitions
-  * Semantics
-  * Execution model
-  * Entry points
-* Technical notes
+* [Rule]
+  * [Definitions]
+  * [Semantics]
+  * [Execution model]
+  * [Entry points]
+  * [Effects]
 
 ## Definitions
+[Definitions]: #definitions
 
 `Rules` obeys the following definitions:
 
@@ -57,12 +59,17 @@ for more clarity and simplicity*.
   ```
 * A condition can only be an ident. (for now)
 
-**Note:** 
+Furthermore, it is possible to add comments to the rules.
+A comment starts with `//` and everything that follow until the line
+return is ignored by the Rules evaluator.
+
+**Note:**
 
 The convention chosen here can be updated and you will be notified of
 any changes as we iterate over the implementation.
 
 ## Semantics
+[Semantics]: #semantics
 
 A rule can create any number of variable and can access global ones
 defined by the Lycan server.  A rule can read them and modify
@@ -94,7 +101,7 @@ The fact that it is ill-formed or not depend only on the Lycan
 server. The server gives access to a set of known variables. Accessing
 a variable that is not available is equivalent to turn the rule into
 an ill-formed one. This set of variable is defined later in this
-proposal see [Entry points]().
+proposal see [Entry points].
 
 An `if` instruction check for the definition of the variable, so
 ```js
@@ -109,10 +116,11 @@ if $a {
 }
 ```
 will only be executed if `$a` is defined when the rules is
-executed. See [Entry points]() for more information about the use of
+executed. See [Entry points] for more information about the use of
 this.
 
 ## Execution model
+[Execution model]: #execution-model
 
 A rule execution order depend on the order of the instructions in the
 file.  Instructions are executed in the order they're defined:
@@ -136,12 +144,13 @@ As you can see, the assignment is not reactive/formal, after (1) `b`
 contains the value of `a` that `a` contains at that point.
 
 A variable can have two states: It is either defined and contains a
-value or it is undefined.  As using and undefined variable turns the
+value or it is undefined. As using an undefined variable turns the
 rule into an ill-formed one, when a global variable might be present
 or not like an **effect**, it is common to wrap the instruction around
 an `if`.
 
 ## Entry points
+[Entry points]: #entry-points
 
 Lycan manipulate entities. `Rules` applies on entities that either
 players or monsters.  It has been defined for now that only 3 entry
@@ -166,10 +175,8 @@ provides the following variables for that entity:
 And also a number of effects that provides the following variables for
 each effect taking place:
 
-- `$<entity_name>.<effect_name>.factor`: The factor of the effect.
-- `$<entity_name>.<effect_name>.time`: The time left before the effect
-  leaves in seconds. (if the effect is instant the value will always
-  be zero).
+- `$<entity_name>.<effect_name>.factor`
+- `$<entity_name>.<effect_name>.time`
 
 ### `dmg_recv`
 
@@ -203,7 +210,7 @@ $me.xp += $dmg.lvl * 1000;
 ### `time`
 
 This rule can access all the variables from the entity `me` and also
-the variable `dt` expressed in seconds.  The latter correspond to the
+a variable `dt` which is expressed in seconds.  The latter correspond to the
 time elapsed between the previous execution of the rule and the
 current execution.
 
@@ -226,3 +233,25 @@ if $me.curse.factor {
   $me.hp -= $dt * e ^ (20 - $me.curse.time);
 }
 ```
+
+## Effects
+[Effects]: #effects
+
+While effects will be described more precisely in another RFC, a few
+things are good to know about them:
+
+* An effect has only two properties `time` and `factor`.
+  - `factor` is a value that has no particular meaning (except the one
+    given by the effect name description)
+  - `time` is a duration in seconds representing the amount of time left
+    before the end of the effect.
+
+* An effect is attached to an entity and is intended be used to customize
+  the way stats for that entity are computed. But only the rules will tell
+  you how it does that customization.
+
+* The `time` script will be invoked as needed in order to make sure
+  that the total sum of `$dt` while an effect is active will always
+  be equal to the effect duration. While this is an implementation
+  detail, it means that the value `<effect_name>.time` will behave as
+  expected.
