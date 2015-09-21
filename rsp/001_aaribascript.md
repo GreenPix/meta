@@ -27,7 +27,7 @@ language rather than a large, potentially heavy, one.
 ## AaribaScript Grammar
 
 ```
-<Rules>          := <Instruction> | ε
+<Rule>          := <Instruction> | ε
 <Instruction>    := <Assignment> | <If> | <Foreach>
 <Assignement>    := <Variable> "=" <Rvalue>
 <Rvalue>         := <Expression> | <Maybe Value>
@@ -35,15 +35,16 @@ language rather than a large, potentially heavy, one.
 <Expression>     := <Expression> <Two-Operand Op> <Expression>
                   | <Function> "(" <Expression> ")"
                   | <Float>
-<If>             := "if" <Global> "{" <Rules> "}" <Else>?
-<Else>           := else "{" <Rules> "}"
+<If>             := "if" <Global> "{" <Rule> "}" <Else>?
+<Else>           := else "{" <Rule> "}"
 <Variable>       := <Global> | <Local>
 <Global>         := "$"<Ident>(.<Ident>)*
 <Local>          := <Ident>
 <Ident>          := [a-z][A-Za-z-_]+
 <Float>          := [0-9]+(\.[0-9]*)?
-<Two-Operand Op> := "sin" | "cos" | "rand" | "min" | "max"
-<Foreach>        := "foreach" "(" <Local> "," <Global> ")" "{" <Rules> "}"
+<Two-Operand Op> := "+" | "-" | "/" | "%" | "^"
+<Function>       := "sin" | "cos" | "rand" | "min" | "max"
+<Foreach>        := "foreach" "(" <Local> "," <Global> ")" "{" <Rule> "}"
 ```
 
 -------------
