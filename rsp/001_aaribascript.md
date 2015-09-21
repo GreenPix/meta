@@ -28,13 +28,14 @@ language rather than a large, potentially heavy, one.
 
 ```
 <Rule>          := <Instruction> | ε
-<Instruction>    := <Assignment> | <If> | <Foreach>
+<Instruction>    := <Assignment> | <If> | <ForeachMap> | <ForeachSet>
 <Assignement>    := <Variable> "=" <Rvalue>
 <Rvalue>         := <Expression> | <Maybe Value>
 <Maybe Value>    := <Expression> "?" <Expression>
 <Expression>     := <Expression> <Two-Operand Op> <Expression>
                   | <Function> "(" <Expression> ")"
                   | <Float>
+                  | <Accessor>
 <If>             := "if" <Global> "{" <Rule> "}" <Else>?
 <Else>           := else "{" <Rule> "}"
 <Variable>       := <Global> | <Local>
@@ -44,7 +45,9 @@ language rather than a large, potentially heavy, one.
 <Float>          := [0-9]+(\.[0-9]*)?
 <Two-Operand Op> := "+" | "-" | "/" | "%" | "^"
 <Function>       := "sin" | "cos" | "rand" | "min" | "max"
-<Foreach>        := "foreach" "(" <Local> "," <Global> ")" "{" <Rule> "}"
+<ForeachMap>     := "foreach" "(" <Global> "," <Global> ")" "in" <Variable> "{" <Rule> "}"
+<ForeachSet>     := "foreach" "(" <Global> ")" "in" <Variable> "{" <Rule> "}"
+<Accessor>       := ...
 ```
 
 ## Aariba Semantic
