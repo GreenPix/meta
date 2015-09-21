@@ -35,6 +35,11 @@ official RSP does not change when it is updated
 2. Increment the revision number (last line of the file)
 3. When merged, the new version of the RSP becomes the official one
 
----------------------
+## RSP List and Descriptions
+
+### RSP - 1 – Aariba Script
+
+This RSP intends to describe the AaribaScript, a dynamic scripting
+language used by Lycan to describe game design rules.
 
 **Revision:** 1
