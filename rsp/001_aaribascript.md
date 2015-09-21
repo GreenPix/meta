@@ -47,6 +47,43 @@ language rather than a large, potentially heavy, one.
 <Foreach>        := "foreach" "(" <Local> "," <Global> ")" "{" <Rule> "}"
 ```
 
+## Aariba Semantic
+
+### Rules and Instructions
+
+An AaribaScript file is called a *Rule*. It is used to describe a
+particular aspect of the game logic. For instance, a game engine may
+need a *Rule* to deal with received damages, or to deal with monster
+deaths, etc. So basically a *Rule* is a script to describe on aspect
+of the game logic.
+
+AaribaScript is a procedural language, so basically a *Rule* is a list
+of *Instructions* that are executed sequentially. There are three
+kinds of *Instruction* in AaribaScript:
+
+* Assignment
+* If block
+* Foreach block
+
+### Variable
+
+In AaribaScript, a variable is a location to store a result. Variable
+can be either local or global. A local variable can only be used in a
+given scope and is destroyed at the end of each execution. A global
+variable, on the contrary, is a variable defined by the game engine.
+It lives outside the Rules that use it. Thus, if a Rule modifies a
+global variable, the new value is available to each Rule that uses it
+after that.
+
+An variable identifier starts with a small letter, then any number of
+letters (capital or not).  It is also possible to have underscope
+inside variable identifier. This, `aaabBBBbb_bdf` is a valid variable
+identifier, but `Aaaa`, `adsq_dq$` and `a_d_1` are not.
+
+A local variable is written with a variable identifier. On the
+contrary, a global variable is identify with a "$" symbol in addition
+to a regular variable identifier.
+
 -------------
 
 **Revision:** 1
