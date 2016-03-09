@@ -22,7 +22,7 @@ actually quite simple:
 4. The last line of the markdown file has to be “**Revision:** 1”
 4. Create a Pull Request
 5. Once the Core Team approves the RSP, it assigns to it a number (the
-   increment of the last approved RSP)
+   Github pull request number)
 5. When the PR is merged, the RSP becomes official and has to be
    followed.
 
