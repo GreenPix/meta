@@ -1,18 +1,8 @@
 ---
 layout: default
-title: "Jekyll Docs Template"
+title: "Renaissance Project"
 ---
 
-### Get Started
-
-Start by [creating a new post](http://jekyllrb.com/docs/posts/) one of the categories listed in `_config.yml`. It will appear in the navigation on the left once recompiled. Or use the supplied script to make creating pages easier:
-
-```bash
-ruby bin/jekyll-page "Some Page Title" ref
-```
-
-#### Don't Forget
-
-- Add your own content to this page (i.e. `index.md`) and change the `title`
-- Change `title` and `subtitle` defined in `config.yml` for your site
-- Set the `baseurl` in `_config.yml` for your repo if deploying to GitHub pages
+Welcome to the Renaissance Project Documentation Center. The Renaissance
+Project is an attempt to write an open source 2D MMORPG from scratch. This
+website is intended to be the entry point of anyone who wish to contribute.
