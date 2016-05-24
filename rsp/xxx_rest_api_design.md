@@ -219,5 +219,19 @@ Kicks a player from the game
 
 XXX: Banning - Should we do it from the management console (i.e. block account, then kick from
                                                             Lycan?)
+## POST /shutdown
+
+### Body
+
+```javascript
+{
+    "time": 60
+}
+```
+
+### Returns
+
+XXX: Token to cancel the shutdown?
+
 
 Revision: WIP
