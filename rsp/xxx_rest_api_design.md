@@ -9,9 +9,12 @@ API base:
 
 /api/v1
 
-All methods are authenticated using a private\_token parameter.
+All methods are authenticated using a Access-Token HTTP header.
 
-XXX: How to get the private token?
+A request without the proper header, or with invalid header will return an error code
+401: Unauthorized
+
+XXX: How to get the access token?
 
 ## GET /maps
 
@@ -66,13 +69,14 @@ Parameters:
 [
 {
     "id": 4,
-    "type": "player",
-    "player": {
-        "id": 1,
-        "name": "Vaelden",
-        "gold": 42,
-        "experience": 43,
-        "guild": "God",
+    "type": {
+        "player": {
+            "id": 1,
+            "name": "Vaelden",
+            "gold": 42,
+            "experience": 43,
+            "guild": "God"
+        }
     },
     "skin": 1,
     "current_pv": 100,
@@ -94,11 +98,12 @@ Parameters:
 },
 {
     "id": 5,
-    "type": "monster",
-    "monster": {
-        "id": 3,
-        "name": "zombie",
-        "behaviour_tree": "zombie.bt"
+    "type": {
+        "monster": {
+            "id": 3,
+            "name": "zombie",
+            "behaviour_tree": "zombie.bt"
+        }
     },
     "skin": 0,
     "current_pv": 100,
@@ -106,7 +111,7 @@ Parameters:
         "x": 0.0,
         "y": 10.0,
         "map": 0,
-        "instance": 3,
+        "instance": 3
     },
     "stats": {
         "level": 7,
@@ -144,11 +149,12 @@ Optional parameters:
 ```javascript
 {
     "id": 6,
-    "type": "monster",
-    "monster_class": {
-        "id": 3,
-        "name": "zombie",
-        "behaviour_tree": "zombie.bt",
+    "type": {
+        "monster": {
+            "id": 3,
+            "name": "zombie",
+            "behaviour_tree": "zombie.bt"
+        }
     },
     "current_pv": 100,
     "position": {
@@ -185,13 +191,14 @@ Get list of connected players
 [
 {
     "id": 4,
-    "type": "player",
-    "player": {
-        "id": 1,
-        "name": "Vaelden",
-        "gold": 42,
-        "experience": 43,
-        "guild": "God",
+    "type": {
+        "player": {
+            "id": 1,
+            "name": "Vaelden",
+            "gold": 42,
+            "experience": 43,
+            "guild": "God"
+        }
     },
     "skin": 1,
     "current_pv": 100,
@@ -233,5 +240,22 @@ XXX: Banning - Should we do it from the management console (i.e. block account, 
 
 XXX: Token to cancel the shutdown?
 
+## POST /connect\_character
+
+Connects a character to the game
+
+### Body
+
+```javascript
+{
+    "token": "0123456789abcdefgh",
+    "id": 42
+}
+```
+
+### Returns
+
+XXX: Should it return an error if the player id is non-existent (i.e. not found in the db)? Or
+should we consider it is already checked by bz and assume it is correct?
 
 Revision: WIP
