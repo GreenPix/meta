@@ -7,7 +7,7 @@ Spells
 
 ## JSON Schema
 
-The JSON schema is available [here](/schemas/spells-schema.js)
+The JSON schema is available [here](/schemas/spells-schema.json)
 
 ## Example
 
