@@ -3,15 +3,19 @@
     "type": "object",
     "title": "Spell",
     "properties": {
-        "id": { "type": "string" },
+        "uuid": { "type": "string" },
         "name": { "type": "string" },
         "description": { "type": "string" },
         "cost": { "type": "integer" },
         "on-start-cast": { "$ref": "#/definitions/spell-effect-array" },
         "on-end-cast": { "$ref": "#/definitions/spell-effect-array" },
-        "on-cast-failure": { "$ref": "#/definitions/spell-effect-array" }
+        "on-cast-failure": { "$ref": "#/definitions/spell-effect-array" },
+        "definitions": {
+            "type": "object",
+            "additionalProperties": { "$ref": "#/definitions/possibleDefinitions" }
+        }
     },
-    "required": ["id","name","cost"],
+    "required": ["uuid","name","cost"],
 
     "definitions": {
         "spell-effect": {
@@ -31,6 +35,12 @@
                 {
                     "properties": { "projectile": { "$ref": "#/definitions/projectile" } },
                     "required": ["projectile"],
+                    "additionalProperties": false
+                },
+                {
+                    "description": "A reference to a spell effect defined inside the #/definitions section",
+                    "properties": { "$ref": { "type": "string" } },
+                    "required": ["$ref"],
                     "additionalProperties": false
                 }
             ]
@@ -93,6 +103,12 @@
                     "properties": { "square": { "$ref": "#/definitions/square" } },
                     "required": ["square"],
                     "additionalProperties": false
+                },
+                {
+                    "description": "A reference to a shape defined inside the #/definitions section",
+                    "properties": { "$ref": { "type": "string" } },
+                    "required": ["$ref"],
+                    "additionalProperties": false
                 }
             ]
         },
@@ -101,15 +117,15 @@
             "enum": ["no", "self", "group", "all"],
             "default": "no"
         },
-        "script": {
+        "script": { "type": "string" },
+        "possibleDefinitions": {
+            "description": "Effects, shapes and other things that need to be accessible from Aariba",
             "oneOf": [
-                { "type": "string" },
+                { "$ref": "#/definitions/spell-effect" },
                 {
-                    "type": "object",
-                    "properties": {
-                        "uuid": { "type": "string" }
-                    },
-                    "required": ["uuid"]
+                    "properties": { "shape": { "$ref": "#/definitions/shape" } },
+                    "required": ["shape"],
+                    "additionalProperties": false
                 }
             ]
         }
